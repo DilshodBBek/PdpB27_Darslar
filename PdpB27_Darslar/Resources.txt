@@ -1,0 +1,45 @@
+OOP ga kirish 1-dars
+https://metanit.com/sharp/tutorial/3.35.php
+https://metanit.com/sharp/tutorial/1.4.php
+https://metanit.com/sharp/tutorial/3.52.php
+https://metanit.com/sharp/tutorial/3.53.php
+https://metanit.com/sharp/tutorial/3.50.php
+https://metanit.com/sharp/tutorial/2.17.php
+https://metanit.com/sharp/tutorial/3.26.php
+
+Encopsulation 2-dars
+https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/access-modifiers
+https://metanit.com/sharp/tutorial/3.2.php
+https://metanit.com/sharp/tutorial/3.4.php
+
+3-dars
+w3schools.com/cs/cs_inheritance.php
+https://metanit.com/sharp/tutorial/3.7.php
+https://metanit.com/sharp/tutorial/3.6.php
+
+4-dars Polimarfizm
+https://www.w3schools.com/cs/cs_polymorphism.php
+https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/object-oriented/polymorphism
+https://metanit.com/sharp/tutorial/3.19.php
+https://www.w3schools.blog/c-sharp-aggregation
+https://www.javatpoint.com/c-sharp-aggregation
+https://www.tutorialsteacher.com/csharp/csharp-extension-method
+
+5-dars Obstraction
+https://www.w3schools.com/cs/cs_abstract.php
+https://metanit.com/sharp/tutorial/3.8.php
+https://metanit.com/sharp/tutorial/3.9.php
+https://www.geeksforgeeks.org/difference-between-abstract-class-and-interface-in-c-sharp/
+https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/nested-types
+https://metanit.com/sharp/tutorial/3.21.php
+https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods
+
+6-Enum, Struct, Generics
+
+https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/struct
+https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/ref-struct
+https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/enum
+https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/generics
+https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/generic-type-parameters
+
+
