@@ -35,10 +35,9 @@ https://metanit.com/sharp/tutorial/3.21.php
 https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods
 
 6-Enum, Struct, Generics
-
+https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/enum
 https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/struct
 https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/ref-struct
-https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/enum
 https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/generics
 https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/generic-type-parameters
 
