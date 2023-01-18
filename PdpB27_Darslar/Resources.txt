@@ -36,8 +36,11 @@ https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-st
 
 6-Enum, Struct, Generics
 https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/enum
+https://medium.com/nerd-for-tech/c-class-struct-record-record-struct-d3b21c57d9bb
+https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/object-oriented/
 https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/struct
-https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/ref-struct
+https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/records
+https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/record
 https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/generics
 https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/generic-type-parameters
 
