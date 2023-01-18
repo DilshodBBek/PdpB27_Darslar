@@ -8,7 +8,7 @@ namespace PdpB27_Darslar._6_Dars.Enum_Struct_Generic
 {
     internal class Startup
     {
-        public static void Start()
+        internal static void Start()
         {
 
         }
