@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace PdpB27_Darslar._6_Dars.Enum_Struct_Generic
 {
-    internal class Startup
+    internal class Class1
     {
-        public  static void Start()
-        {
-            //changes for test  
-        }
     }
 }
