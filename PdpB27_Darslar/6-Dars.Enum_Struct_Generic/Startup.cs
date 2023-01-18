@@ -10,7 +10,7 @@ namespace PdpB27_Darslar._6_Dars.Enum_Struct_Generic
     {
         public  static void Start()
         {
-
+            //changes for test
         }
     }
 }
