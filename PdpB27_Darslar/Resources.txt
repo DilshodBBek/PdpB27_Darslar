@@ -51,4 +51,5 @@ https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types
 https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/null-coalescing-operator
 https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/unmanaged-types
 https://learn.microsoft.com/en-us/dotnet/api/system.collections.concurrent?view=net-7.0
+https://learn.microsoft.com/en-us/dotnet/api/system.collections.sortedlist?view=net-7.0
 
