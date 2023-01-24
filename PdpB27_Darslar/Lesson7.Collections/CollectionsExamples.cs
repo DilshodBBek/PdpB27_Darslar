@@ -5,7 +5,7 @@ using System.Data;
 namespace PdpB27_Darslar.Collections
 {
 
-    public class MyArrayList
+    public class CollectionsExamples
     {
 
         public static void ArrayListStart()
@@ -131,13 +131,19 @@ namespace PdpB27_Darslar.Collections
 
         public static void DictionaryStart()
         {
-            Dictionary<string, string> m = new Dictionary<string,int>();
+            Dictionary<string, int> m = new();
             m.Add("Yosh bola", 1);
             m.Add("O'smir", 13);
             m.Add("Yosh avlod", 20);
             Console.WriteLine(m);
-             
-            
+        }
+
+        public static void HashTable()
+        {
+            Hashtable hashtable =new Hashtable();
+            HashSet<int> keys = new HashSet<int>();
+
+            keys.Add(1);
         }
 
     }
