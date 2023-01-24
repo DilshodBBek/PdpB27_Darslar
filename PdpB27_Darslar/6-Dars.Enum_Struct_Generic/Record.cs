@@ -30,7 +30,6 @@ internal class Record
         Car car1 = new Car { MyProperty = 9, My1 = 7 };
        // Car name2 = car1 with { MyProperty = 9, };
        // Name name = new("Michael", "Jackson");
-        Console.WriteLine(name);
 
         Name1 name1 = new("Michael", "Jordan");
         Console.WriteLine(name1);//Name { first = Michael, second = Jordan }
