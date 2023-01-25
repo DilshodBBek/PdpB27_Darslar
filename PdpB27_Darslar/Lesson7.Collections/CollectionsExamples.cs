@@ -1,4 +1,5 @@
 ﻿using PdpB27_Darslar._6_Dars.Enum_Struct_Generic;
+using PdpB27_Darslar.Lesson7.Collections;
 using System.Collections;
 using System.Data;
 
@@ -7,10 +8,20 @@ namespace PdpB27_Darslar.Collections
 
     public class CollectionsExamples
     {
+        public static void CallCustomCollections()
+        {
+            MyStack myStack=new MyStack();
 
+            myStack.Push(5);
+            myStack.Push(2);
+            myStack.Push(3);
+            myStack.Push(7);
+
+            Console.WriteLine(myStack.Top());
+        }
         public static void ArrayListStart()
         {
-            ArrayList a = new ArrayList(50);
+            ArrayList a = new(50);
             Console.WriteLine(a.Capacity);
             int b = 5;
             object c = b;

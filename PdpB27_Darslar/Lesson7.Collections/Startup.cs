@@ -14,7 +14,7 @@ namespace PdpB27_Darslar.Collections
             //MyArrayList.ListStart();
             //MyArrayList.QueueStart();
             //MyArrayList.StackStart();
-            CollectionsExamples.DictionaryStart();
+            CollectionsExamples.CallCustomCollections();
         }
         
     }
