@@ -92,8 +92,8 @@ namespace PdpB27_Darslar.Collections
         }
         public static void LinkedListStart()
         {
-            MyListNode m = new MyListNode(2);
-            MyListNode listNode = new MyListNode(3);
+            ListNode m = new ListNode(2);
+            ListNode listNode = new ListNode(3);
             m.next = listNode;
             listNode.next = m;
             LinkedList<int> a = new();
