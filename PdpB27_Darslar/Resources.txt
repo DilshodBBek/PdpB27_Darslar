@@ -46,7 +46,6 @@ https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/gener
 
 9-Dars Tuple, Nullable types
 https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/value-tuples
-https://www.tutorialsteacher.com/csharp/valuetuple
 https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/nullable-value-types
 https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/null-coalescing-operator
 https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/unmanaged-types
