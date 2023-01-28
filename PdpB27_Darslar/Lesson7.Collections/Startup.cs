@@ -1,4 +1,5 @@
 ﻿using PdpB27_Darslar.Lesson7.Collections;
+using PdpB27_Darslar.Lesson7.Collections.MyCollection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,16 +12,31 @@ namespace PdpB27_Darslar.Collections
     {
         public static void Start()
         {
-            ListNode l1 = new(-9)
-            {
-                next = new ListNode(3)
-            };
+            MyCollection<int> myCollection = new();
 
-            ListNode l2 = new ListNode(5)
+            myCollection.Add(1);
+            myCollection.Add(2);
+
+            Console.WriteLine(myCollection[0]);
+
+            myCollection[1]=99;
+            Console.WriteLine(myCollection[1]);
+
+            foreach (var item in myCollection)
             {
-                next = new ListNode(7)
-            };
-            LinkedListExamples.MergeTwoLists(l1, l2);
+                Console.WriteLine(item);
+            }
+            //MyCollectionStart.Start();
+            //ListNode l1 = new(-9)
+            //{
+            //    next = new ListNode(3)
+            //};
+
+            //ListNode l2 = new ListNode(5)
+            //{
+            //    next = new ListNode(7)
+            //};
+            //LinkedListExamples.MergeTwoLists(l1, l2);
             //HashStart();
             //MyArrayList.ArrayListStart();
             //MyArrayList.ListStart();
