@@ -2,7 +2,7 @@
 
 namespace PdpB27_Darslar.Lesson8_Collections_2.IEnumerable_IEnumerator_Examples
 {
-    internal class People : IEnumerable<int>
+    internal class People : IEnumerable
     {
         private Person[] _people;
         public People(Person[] pArray)
@@ -26,10 +26,10 @@ namespace PdpB27_Darslar.Lesson8_Collections_2.IEnumerable_IEnumerator_Examples
             return new PeopleEnum(_people);
         }
 
-        IEnumerator<int> IEnumerable<int>.GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
+        //IEnumerator<int> IEnumerable<int>.GetEnumerator()
+        //{
+        //    throw new NotImplementedException();
+        //}
 
     }
 }
