@@ -16,8 +16,10 @@ namespace PdpB27_Darslar.Lesson8_Collections_2
             //IEnumerator<int> enumerator= list.GetEnumerator();
             //Console.WriteLine(enumerator.Current);
             //Console.WriteLine(enumerator.MoveNext());
-            IDictionary<>
-            IEnumerable<int> col = new List<int>() { 1, 2, 5, 7 };
+            
+            ICollection<int> col = new List<int>() { 1, 2, 5, 7 };
+
+            col.Add(1);
             //Console.WriteLine(col[9]);
             
            // Example_ICollection ints = new();
