@@ -12,7 +12,7 @@ namespace PdpB27_Darslar
             //PdpB27_Darslar._6_Dars.Enum_Struct_Generic.Startup.Start();
             //PdpB27_Darslar.Collections.Startup.Start();
             //Startup.Lesson9Start();
-            PdpB27_Darslar.Collections.Startup.Start();
+           // PdpB27_Darslar.Collections.Startup.Start();
             Lesson8.Startup();
 
         }

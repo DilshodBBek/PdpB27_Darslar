@@ -22,10 +22,10 @@ namespace PdpB27_Darslar.Collections
             myCollection[1]=99;
             Console.WriteLine(myCollection[1]);
 
-            foreach (var item in myCollection)
-            {
-                Console.WriteLine(item);
-            }
+            //foreach (var item in myCollection)
+            //{
+            //    Console.WriteLine(item);
+            //}
             //MyCollectionStart.Start();
             //ListNode l1 = new(-9)
             //{
