@@ -1,10 +1,5 @@
 ﻿using OnlineEducation.Interfaces;
 using OnlineEducation.States;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OnlineEducation.Models
 {
@@ -19,7 +14,7 @@ namespace OnlineEducation.Models
 
         public void GetSalary()
         {
-            if (Account.AccountStatus==AccountStatus.Active)
+            if (Account.AccountStatus == AccountStatus.Active)
             {
                 Console.WriteLine("{0} Get salary {1} ", Name, 99999);
             }
@@ -27,7 +22,7 @@ namespace OnlineEducation.Models
 
         public void Teach()
         {
-            Console.WriteLine(TeachingCourse.Name+" Lesson started..");
+            Console.WriteLine(TeachingCourse.Name + " Lesson started..");
         }
     }
 }

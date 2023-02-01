@@ -1,10 +1,5 @@
 ﻿using OnlineEducation.Interfaces;
 using OnlineEducation.States;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OnlineEducation.Models
 {
@@ -14,7 +9,7 @@ namespace OnlineEducation.Models
         public string AccountNumber { get; set; }
         public AccountStatus AccountStatus { get; set; }
         public string PersonId { get; set; }
-       public static Account AddAccount(string PersonId)
+        public static Account AddAccount(string PersonId)
         {
             Console.WriteLine($"{PersonId} added new account");
             return new Account() { Id = 123 };

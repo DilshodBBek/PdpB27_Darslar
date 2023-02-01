@@ -11,6 +11,6 @@ namespace OnlineEducation.Interfaces
 
         void RemoveAccount(Account account);
         //static Account AddAccount(string PersonId);
-        
+
     }
 }

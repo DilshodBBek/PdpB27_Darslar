@@ -1,10 +1,5 @@
 ﻿using OnlineEducation.Interfaces;
 using OnlineEducation.States;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OnlineEducation.Models
 {
