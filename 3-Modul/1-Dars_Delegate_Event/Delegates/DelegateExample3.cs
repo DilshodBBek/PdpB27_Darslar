@@ -9,7 +9,7 @@ namespace _3_Modul._1_Dars_Delegate_Event.Delegates
     internal class DelegateExample3
     {
         public static string message = "Hello I am Donald Tramp. Time: " + DateTime.Now;
-        public delegate bool SmsServicePointer(int number);    
+        public delegate bool SmsServicePointer(int number);
         static SmsServicePointer smsSenderPointer = SendSMS;
         public static void Run()
         {

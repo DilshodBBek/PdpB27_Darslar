@@ -19,6 +19,7 @@ namespace _3_Modul._1_Dars_Delegate_Event
             emails.Add("Tramp@mail.ru");
 
             string? foundEmail = emails.Find(isEmailAddres);
+
             Console.WriteLine("Find email address is:{0}", foundEmail);
         }
     }

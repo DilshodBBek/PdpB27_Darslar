@@ -4,46 +4,53 @@
 
     internal class DelegateExamples
     {
-        public delegate bool SendSMS(string message, int phone);
-        static EventStart? eventStart;
         public static void Start()
         {
-            eventStart = SimpleDelegate;
+            EventStart eventStart = SimpleDelegate;
+            EventStart start = ShowMoreExamples;
+            start += SimpleDelegate;
+            //eventStart();
+
+            EventStart eventStart1 = eventStart + start;
+            eventStart1.Invoke();
+            //eventStart.Invoke();
             Console.WriteLine(eventStart.Target);
-            Console.WriteLine(eventStart.Method.Name);
+            Console.WriteLine(eventStart.Method);
 
             //eventStart += Stop;
-            //eventStart += ShowMoreExamples;
-            //eventStart -= Stop;
 
-            eventStart();
             //eventStart.Invoke();
-        }
-
-        public static void Stop()
-        {
-            Console.WriteLine();
         }
         public static void SimpleDelegate()
         {
-            Console.WriteLine("this is called by eventStart delegate");
+            Console.WriteLine("SimpleDelegate();");
         }
 
-        public static void ShowMoreExamples()
+        public delegate bool SendSMS(string message, int phone);
+        
+        public static  void ShowMoreExamples()
         {
-            SMS smsObj = new();
-            smsObj.sms("smsObj", 234);
+            Console.WriteLine("ShowMoreExamples");
+            //SMS smsObj = new();
 
-            SendSMS sms = SMS.SendSmsMessage;
+            //smsObj.sms("smsObj", 234);
 
-            sms.Invoke("this is Invoke method", 111);
+            //SMS.SendSmsMessage("smsObj", 234);
 
-            SendSMS send = new SendSMS(
-                delegate (string sdsd, int sd)
-            {
-                Console.WriteLine(sdsd);
-                return true;
-            });
+            //SendSMS sms = SMS.SendSmsMessage;
+            ////sms+=SendSMS
+            //bool res = sms("this is Invoke method", 111);
+
+            //SendSMS send = new SendSMS(
+            //    delegate (string sdsd, int sd)
+            //{
+            //    Console.WriteLine(sdsd);
+            //    return true;
+            //});
+        }
+        public static void Stop()
+        {
+            Console.WriteLine("Stop()");
         }
     }
 }

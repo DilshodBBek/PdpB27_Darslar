@@ -1,17 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace _3_Modul._1_Dars_Delegate_Event
+﻿namespace _3_Modul._1_Dars_Delegate_Event
 {
     internal class ActionExample
     {
         public static void Run()
         {
-            Action<string> PrintCosoleAction = message => Console.WriteLine(message);
-            PrintCosoleAction("Action amalda ishlash tarzi");
+            Action<string, int> PrintCosoleAction = (d, t) =>
+            {
+                d += "dsf"; Console.WriteLine(d);
+            };
+            PrintCosoleAction("Action amalda ishlash tarzi ", 4);
+
+            Action Myaction = () =>
+            {
+                Console.WriteLine("sdgs");
+                //db.Connect();
+                //
+            };
+            Action<string, int> g = ActionTest;
+        }
+
+        public static void ActionTest(string a, int b)
+        {
+
         }
     }
 }

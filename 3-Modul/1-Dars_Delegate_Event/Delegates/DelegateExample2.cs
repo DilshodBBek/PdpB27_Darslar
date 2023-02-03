@@ -1,11 +1,16 @@
-﻿namespace _3_Modul._1_Dars_Delegate_Event.Delegates
+﻿using static _3_Modul._1_Dars_Delegate_Event.Delegates.SmsService;
+
+namespace _3_Modul._1_Dars_Delegate_Event.Delegates
 {
     internal class DelegateExample2
     {
         public static void Run()
         {
             SmsService smsService = new();
-            bool result = smsService.SendSMS(901112233, EmailMessageSender);
+            //MyPointer pointer = smsService.Do2;
+            //smsService.Do(smsService.Do2);
+
+            bool result = smsService.SendSMS(EmailMessageSender);
         }
 
         static bool EmailMessageSender(string message, string address)
@@ -18,15 +23,35 @@
 
     class SmsService
     {
-        string message = "Hello I am Donald Tramp. Time: " + DateTime.Now;
+        //string message = "Hello I am Donald Tramp. Time: " + DateTime.Now;
 
         public delegate bool EmailSenderCallback(string text, string emailAddress);
 
-        public bool SendSMS(int phone, EmailSenderCallback callback)
+        public bool SendSMS(EmailSenderCallback callback)
         {
-            Console.WriteLine("Sms message:'{0}' Phone number:'{1}'", message, phone);
-            bool emailresult = callback.Invoke(message, "McDonald_Tramp@gmail.com");
+            Console.WriteLine("Sms message:'Hi' Phone number:'11111'");
+            bool emailresult = callback.Invoke("Hi", "McDonald_Tramp@gmail.com");
             return emailresult;
+        }
+
+        public delegate void MyPointer();
+
+        public void Do(MyPointer pointer)
+        {
+            Console.WriteLine("Do() worked..");
+            pointer += Do3;
+            pointer.Invoke();
+
+        }
+
+        public void Do2()
+        {
+            Console.WriteLine("Do2 worked..");
+        }
+
+        public void Do3()
+        {
+            Console.WriteLine("Do3 worked..");
         }
     }
 }

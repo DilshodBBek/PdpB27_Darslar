@@ -1,24 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace _3_Modul._1_Dars_Delegate_Event
+﻿namespace _3_Modul._1_Dars_Delegate_Event
 {
     internal class LambdaExpressionExample
     {
-        public static string message = "Hello I am Donald Tramp. Time: " + DateTime.Now;
-        public delegate bool SmsServicePointer(int number);
+        public delegate int MathPow<T, TKey, Tvalue, TNimadir>(int number, TNimadir obj);
+           
+        public delegate int MyDel();
+        //static MathPow PowDelegate = Pow;
+        static MathPow<int, string, double, MyDel> smsSenderPointer = (phone, MyDel) =>
+        {
+            int a = phone * phone;
+            MyDel.Invoke();
+            return a;
+        };
         public static void Run()
         {
-            SmsServicePointer smsSenderPointer = phone =>
-            {
-                Console.WriteLine("Sms message:'{0}' Phone number:'{1}'", message, phone);
-                return true;
-            };
-            bool result = smsSenderPointer(901112233);
-            Console.WriteLine("Email message:'{0}' was sent to McDonald_Tramp@gmail.com", message);
+            MyDel del=Pow;
+            int res = smsSenderPointer.Invoke(5, del);
+            //int res = PowDelegate(5);
+            Console.WriteLine(res);
+        }
+
+        public static int Pow()
+        {
+            return 9;
         }
     }
 }

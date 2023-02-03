@@ -1,23 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace _3_Modul._1_Dars_Delegate_Event
+﻿namespace _3_Modul._1_Dars_Delegate_Event
 {
     internal class FunctionExample
     {
-        public static string message = "Hello I am Donald Tramp. Time: " + DateTime.Now;
+        delegate bool DelegateTest<T>(T test);
         public static void Run()
         {
-            Func<int, bool> smsSenderPointer = phone =>
+            Func<Person, int, int> funcExample = (person, r) =>
             {
-                Console.WriteLine("Sms message:'{0}' Phone number:'{1}'", message, phone);
-                return true;
+                Console.WriteLine("Func example " + person);
+                return 5;
             };
-            bool result = smsSenderPointer(901112233);
-            Console.WriteLine("Email message:'{0}' was sent to McDonald_Tramp@gmail.com", message);
+
+            Person person = new() { id = 3, name = "Alex" };
+            int result = funcExample.Invoke(person, 7);
+            Console.WriteLine(result);
+
+            Func<Action<int>, Func<int>> MyDelegate = (a) =>
+            {
+                a.Invoke(7);
+                return () =>
+                {
+                    Console.WriteLine("dsg");
+                    return 6;
+                };
+            };
+
+            Func<int> t = MyDelegate.Invoke(Test);
+
         }
+
+        public static void Test(int f)
+        {
+            Console.WriteLine("Bu test!");
+        }
+    }
+
+    record Person
+    {
+        public int id;
+        public string name;
     }
 }

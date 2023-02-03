@@ -2,24 +2,17 @@
 {
     internal class AnonymousFunctionExample
     {
-        public static string message = "Hello I am Donald Tramp. Time: " + DateTime.Now;
-        public delegate bool SmsServicePointer(int number);
-        //static SmsServicePointer smsSenderPointer = SendSMS;
+        public delegate TReturnType SmsServicePointer<T, TReturnType>(T number, TReturnType x) 
+            where T:struct 
+            where TReturnType:class;
         public static void Run()
         {
-            SmsServicePointer smsSenderPointer = delegate(int phone)
+            SmsServicePointer<int,string> smsSenderPointer = delegate (int phone, string x )
             {
-                Console.WriteLine("Sms message:'{0}' Phone number:'{1}'", message, phone);
-                return true;
+                return (phone * phone).ToString();
             };
-            bool result = smsSenderPointer(901112233);
-            Console.WriteLine("Email message:'{0}' was sent to McDonald_Tramp@gmail.com", message);
+            string result = smsSenderPointer.Invoke(4, "hi");
+            Console.WriteLine(result);  
         }
-
-        //public static bool SendSMS(int phone)
-        //{
-        //    Console.WriteLine("Sms message:'{0}' Phone number:'{1}'", message, phone);
-        //    return true;
-        //}
     }
 }
