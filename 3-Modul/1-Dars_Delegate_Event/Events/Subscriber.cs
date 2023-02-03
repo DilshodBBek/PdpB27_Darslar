@@ -21,5 +21,10 @@ namespace _3_Modul._1_Dars_Delegate_Event.Events
         {
             GetAllMessages.Add((sender, smsText));
         }
+
+        internal void SendMessage()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
