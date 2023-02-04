@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _3_Modul._1_Dars_Delegate_Event.Events
 {
-    internal class Subscriber //Oy
+    internal class Subscriber //Kosmik stanstsiya
     {
         List<(object, string)> GetAllMessages = new();
         public void ShowAllMessages()
@@ -17,9 +17,9 @@ namespace _3_Modul._1_Dars_Delegate_Event.Events
             }
         }
 
-        public void OnClickSendSms(object? sender, string smsText)
+        public void OnClickGetSms(object? sender, string smsText)
         {
-            GetAllMessages.Add((sender, smsText));
+            GetAllMessages.Add(((sender as EventPublisher).Country, smsText));
         }
 
         internal void SendMessage()

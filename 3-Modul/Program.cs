@@ -1,4 +1,5 @@
 ﻿using _3_Modul._1_Dars_Delegate_Event;
+using _3_Modul.AnonymVariable;
 
 namespace _3_Modul
 {
@@ -6,7 +7,8 @@ namespace _3_Modul
     {
         static void Main(string[] args)
         {
-            Startup.Start();
+            //Startup.Start();
+            AnonymExamples.Run();
         }
     }
 }

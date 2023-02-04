@@ -21,6 +21,15 @@ namespace _3_Modul._1_Dars_Delegate_Event
             string? foundEmail = emails.Find(isEmailAddres);
 
             Console.WriteLine("Find email address is:{0}", foundEmail);
+
+            string f = "sdfsgDilshoddfhdfDilshodfgjghDilshod";
+            //f(x => x.Equals("Dilshod"));
+
+            Dictionary<string, int> d = new();
+
+            d.Any(x => x.Key=="Google"&&x.Value==1);
+
+
         }
     }
 }
