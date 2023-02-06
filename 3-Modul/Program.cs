@@ -6,11 +6,11 @@ namespace _3_Modul
 {
     internal class Program
     {
-        static void Startup(string[] args)
+        static void Main(string[] args)
         {
-            //Startup.Start();
+            _1_Dars_Delegate_Event.Startup.Start();
             // AnonymExamples.Run();
-            Startup_3_lesson.Main();
+            //Startup_3_lesson.Main();
 
 
         }

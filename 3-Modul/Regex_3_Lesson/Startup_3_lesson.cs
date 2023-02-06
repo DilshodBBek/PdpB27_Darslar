@@ -9,7 +9,7 @@ namespace _3_Modul.Regex_3_Lesson
 {
     internal class Startup_3_lesson
     {
-        public static void Main()
+        public static void MainRegex()
         {
             MyRegexExamples.Start();
         }

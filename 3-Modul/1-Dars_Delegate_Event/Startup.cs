@@ -14,22 +14,26 @@ namespace _3_Modul._1_Dars_Delegate_Event
             //FunctionExample.Run();
             //ActionExample.Run();
             //PredicateExample.Run();
-
+            MyChatRun myChatRun = new();
+            myChatRun.StartChat();
             Subscriber KosmikStansiyaAppollon = new();//oy
             Subscriber KosmikStansiya1 = new();//oy
             Subscriber KosmikStansiya2 = new();//oy
             EventPublisher Yer = new() { Country = "O`zbekiston" };//yer
 
 
-            Yer.OnClickSendSms += new ClickSendSms(KosmikStansiyaAppollon.OnClickGetSms);
+            Yer.OnClickSendSms += KosmikStansiyaAppollon.OnClickGetSms;
             Yer.OnClickSendSms += KosmikStansiya1.OnClickGetSms;
             Yer.OnClickSendSms += KosmikStansiya2.OnClickGetSms;
 
 
             Yer.SendSmsMessage();
+
             KosmikStansiyaAppollon.ShowAllMessages();
 
             Yer.OnClickSendSms -= KosmikStansiyaAppollon.OnClickGetSms;
+            Yer.OnClickSendSms -= KosmikStansiya1.OnClickGetSms;
+            Yer.OnClickSendSms -= KosmikStansiya2.OnClickGetSms;
 
             //do
             //{
