@@ -8,7 +8,7 @@ namespace _3_Modul
     {
         static void Main(string[] args)
         {
-            //_1_Dars_Delegate_Event.Startup.Start();
+           // _1_Dars_Delegate_Event.Startup.Start();
             // AnonymExamples.Run();
             Startup_3_lesson.MainRegex();
 

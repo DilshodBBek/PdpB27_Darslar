@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace _3_Modul.Regex_3_Lesson.Regex_Examples;
 
@@ -27,8 +28,8 @@ internal class MyRegexExamples
 {
     public static void Start()
     {
-        Console.WriteLine("Matnni kiriting:");
-        string InputString = Console.ReadLine() ?? "";
+        //Console.WriteLine("Matnni kiriting:");
+        //string InputString = Console.ReadLine() ?? "";
         //string pattern = @"\.com$";
         //Regex a = new Regex(@"\.com$");
         //Console.WriteLine(a.IsMatch(InputString));// Regex.IsMatch(InputString, pattern));
@@ -69,37 +70,51 @@ internal class MyRegexExamples
         //Console.WriteLine(Regex.IsMatch(InputString, @"^www\.[0-9a-zA-Z]{1,50}\.(com|org|in)$"));
 
         //Any character except hello ?
-        Console.Write("Any character except hello ? : ");
-        Console.WriteLine(Regex.IsMatch(InputString, "^s"));
+        //Console.Write("Any character except hello ? : ");
+        //Console.WriteLine(Regex.IsMatch(InputString, "^s"));
 
 
 
         //string pattern = @"(\s|^)(T|t)im(\s|$)";
-        //string toSearch = "Tim Corey";
-
-        //Console.WriteLine("Tom Corey: " + Regex.IsMatch("Tim Corey", pattern));
+        ////string toSearch = "Tim Corey";
+        //pattern = @"(\s|^)(T|t)im(\s|$|[ -@])";
+        //Console.WriteLine("Tim Corey: " + Regex.IsMatch("Tim Corey", pattern));
         //Console.WriteLine("Timothy Corey: " + Regex.IsMatch("Timothy Corey", pattern));
-        //Console.WriteLine("Always Tim: " + Regex.IsMatch("Always Tim", pattern));
-        //Console.WriteLine("I Am Tim Corey: " + Regex.IsMatch("I Am Tim Corey", pattern));
+        //Console.WriteLine("Always. Tim: " + Regex.IsMatch("Always. Tim:", pattern));
+        //Console.WriteLine("I Am Tim Corey: " + Regex.IsMatch("I Am Tim@ Corey", pattern));
 
 
         // (440) 555-1212
         // 12-34567890
         // 123 87876
 
-        // string toSearch = File.ReadAllText("test.txt");
-
+         string toSearch = File.ReadAllText(@"C:\Users\User\Desktop\VS\PdpB27_Darslar\3-Modul\Regex_3_Lesson\Regex_Examples\test.txt");
         // This pattern matches phone numbers in the following patterns
-        //string pattern = @"\(?\d{3}\)?(-|.|\s)?\d{3}(-|.)?\d{4}";
-
+        string pattern = @"\(?\d{3}\)?(-|.|\s)?\d{3}(-|.)?\d{4}";
+        //570.555.9632
+        //4405554567
+        //(440) 555-9876
+        //570.555-1235
+        //440-555-5201
+        //pattern = @"(^|\s|\(|\+)\d{3}(\s|.|-|\)\s)?\d{3}(\s|.|-)?\d{4}";
         //MatchCollection matches = Regex.Matches(toSearch, pattern);
 
-        //foreach (Match match in matches)
+
+        //Stopwatch stopwatch = new();
+        //stopwatch.Start();
+        //toSearch.Equals("sdfds", comparisonType: StringComparison.);
+        string a = "Straße";
+        string b = "Strasse";
+        //Console.WriteLine(b.Equals(a,StringComparison.));
+        //foreach (var match in matches)
         //{
-        //    Console.WriteLine(match.Value);
+        //    Console.WriteLine(match);
         //}
 
+        //stopwatch.Stop();
+        //Console.WriteLine($"Time Elapsed in ms: {stopwatch.ElapsedMilliseconds}");
 
+        //Console.WriteLine
         //Stopwatch stopwatch = new();
 
         //stopwatch.Start();

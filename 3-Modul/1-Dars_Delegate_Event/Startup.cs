@@ -1,4 +1,5 @@
 ﻿using _3_Modul._1_Dars_Delegate_Event.Events;
+using _3_Modul._1_Dars_Delegate_Event.Mafia;
 
 namespace _3_Modul._1_Dars_Delegate_Event
 {
@@ -14,6 +15,7 @@ namespace _3_Modul._1_Dars_Delegate_Event
             //FunctionExample.Run();
             //ActionExample.Run();
             //PredicateExample.Run();
+            StartMafia.Run();
             MyChatRun myChatRun = new();
             myChatRun.StartChat();
             Subscriber KosmikStansiyaAppollon = new();//oy
