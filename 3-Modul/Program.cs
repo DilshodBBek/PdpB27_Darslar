@@ -9,7 +9,7 @@ namespace _3_Modul
     {
         static void Main(string[] args)
         {
-            //Startup.Start();
+           // _1_Dars_Delegate_Event.Startup.Start();
             // AnonymExamples.Run();
             //Startup_3_lesson.Main();
             Files_Directories_5_lesson.Startup.Run();

@@ -12,6 +12,10 @@ namespace _3_Modul._1_Dars_Delegate_Event.Events
         public string Message { get; set; }
         public DateTime SendDate { get; set; }
 
+        public override string ToString()
+        {
+            return $"Id: {Id}, Message:{Message}, SendDate:{SendDate}";
+        }
 
     }
 }

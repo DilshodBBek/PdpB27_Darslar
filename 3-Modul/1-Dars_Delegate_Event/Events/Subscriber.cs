@@ -8,7 +8,7 @@ namespace _3_Modul._1_Dars_Delegate_Event.Events
 {
     internal class Subscriber //Kosmik stanstsiya
     {
-        List<(object, string)> GetAllMessages = new();
+        List<(object, SendSmsEventArgs)> GetAllMessages = new();
         public void ShowAllMessages()
         {            
             foreach (var item in GetAllMessages)
@@ -17,9 +17,9 @@ namespace _3_Modul._1_Dars_Delegate_Event.Events
             }
         }
 
-        public void OnClickGetSms(object? sender, string smsText)
+        public void OnClickGetSms(object? sender, SendSmsEventArgs eventArgs)
         {
-            GetAllMessages.Add(((sender as EventPublisher).Country, smsText));
+            GetAllMessages.Add(((sender as EventPublisher).Country, eventArgs));
         }
 
         internal void SendMessage()
