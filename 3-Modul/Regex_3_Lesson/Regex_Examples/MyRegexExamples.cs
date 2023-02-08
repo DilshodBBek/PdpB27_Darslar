@@ -40,8 +40,9 @@ internal class MyRegexExamples
 
         //Enter characters between[a - g] with length of 3 ?
         //Console.Write("Enter characters between[a - g] with length of 3 ? : ");
-        //Console.WriteLine(Regex.IsMatch(InputString, "[a-g]{3}"));
-
+        //Console.WriteLine(Regex.IsMatch(InputString, @"^[a-g]\.[a-g]$"));
+        //while(true)Console.WriteLine(Regex.IsMatch(Console.ReadLine(), @"^(?!sw)[az].[a-z]*$"));
+        while(true)Console.WriteLine(Regex.IsMatch(Console.ReadLine(), @"^((?![hede][a-z]).){4}$"));
         ////Enter characters between[a - g] with maximum 3 characters and minimum 1 character?
         //Console.Write("Enter characters between[a - g] with maximum 3 characters and minimum 1 character? : ");
         //Console.WriteLine(Regex.IsMatch(InputString, "^[a-g]{1,3}$"));
@@ -88,7 +89,7 @@ internal class MyRegexExamples
         // 12-34567890
         // 123 87876
 
-         string toSearch = File.ReadAllText(@"C:\Users\User\Desktop\VS\PdpB27_Darslar\3-Modul\Regex_3_Lesson\Regex_Examples\test.txt");
+        string toSearch = File.ReadAllText(@"C:\Users\User\Desktop\VS\PdpB27_Darslar\3-Modul\Regex_3_Lesson\Regex_Examples\test.txt");
         // This pattern matches phone numbers in the following patterns
         string pattern = @"\(?\d{3}\)?(-|.|\s)?\d{3}(-|.)?\d{4}";
         //570.555.9632
