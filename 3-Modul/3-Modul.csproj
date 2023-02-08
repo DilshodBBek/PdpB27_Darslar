@@ -9,8 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DateTime_4_lesson\" />
-    <Folder Include="Files_Directories_5_lesson\MyFolder\" />
+    <Folder Include="Files_Directories_5_lesson\MyFolder\SubFolderA\TestFolder\" />
   </ItemGroup>
 
 </Project>
