@@ -11,7 +11,8 @@ namespace _3_Modul.Files_Directories_5_lesson
     {
         public static void Run()
         {
-            WorkingWithFilesExamples.Start();
+            //WorkingWithFilesExamples.Start();
+            FilesWorkingWithObjects.Run();
         }
     }
 }

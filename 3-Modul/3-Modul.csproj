@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <Folder Include="Files_Directories_5_lesson\MyFolder\SubFolderA\TestFolder\" />
+    <Folder Include="Person\" />
   </ItemGroup>
 
 </Project>
