@@ -12,7 +12,8 @@ namespace _3_Modul.Files_Directories_5_lesson
         public static void Run()
         {
             //WorkingWithFilesExamples.Start();
-            FilesWorkingWithObjects.Run();
+           List<Person> myList= FilesWorkingWithObjects.GetAllData();
+            Console.WriteLine();
         }
     }
 }
