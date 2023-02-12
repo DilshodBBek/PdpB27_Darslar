@@ -10,11 +10,12 @@ namespace _3_Modul
     {
         static void Main(string[] args)
         {
-           // _1_Dars_Delegate_Event.Startup.Start();
+            // _1_Dars_Delegate_Event.Startup.Start();
             // AnonymExamples.Run();
             //Startup_3_lesson.Main();
             //DateTimeStartup.Start();
-           Files_Directories_5_lesson.Startup.Run();
+            //Files_Directories_5_lesson.Startup.Run();
+            Lesson_6_JSON_XML.Startup.Start();
 
 
         }
