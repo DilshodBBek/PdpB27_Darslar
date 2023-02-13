@@ -12,7 +12,7 @@ namespace _3_Modul.Files_Directories_5_lesson
         public static void Run()
         {
             //WorkingWithFilesExamples.Start();
-           List<Person> myList= FilesWorkingWithObjects.GetAllData();
+            List<Person> myList = FilesWorkingWithObjects.GetAllData();
             Console.WriteLine();
         }
     }
