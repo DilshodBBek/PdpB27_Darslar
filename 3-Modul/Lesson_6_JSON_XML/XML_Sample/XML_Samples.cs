@@ -14,10 +14,15 @@ namespace _3_Modul.Lesson_6_JSON_XML.XML_Sample
        static readonly string XMLFile2 = @"..\..\..\Lesson_6_JSON_XML\XML_Sample\XMLFile2.xml";
         public static void Run()
         {
+            
             XmlDocument xDoc = new XmlDocument();
             xDoc.Load(XMLFile1);
 
             XmlElement? xRoot = xDoc.DocumentElement;
+            //var nodeList = xRoot.SelectNodes("/people/student");
+            //var node = xRoot.SelectSingleNode("/people/student[@name='Timur']");
+            //nodeList = xRoot.ChildNodes;// ("/people/student");
+            //XmlNode element = xRoot.RemoveChild(node);
             if (xRoot != null)
             {
                 // обход всех узлов в корневом элементе
@@ -49,23 +54,23 @@ namespace _3_Modul.Lesson_6_JSON_XML.XML_Sample
         }
         public static void XML_Serialize()
         {
-            Person person = new Person("Tom", 37);
-
+            Person person = new("fasdghjk", 33,11);
             // передаем в конструктор тип класса Person
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(Person));
 
-            // получаем поток, куда будем записывать сериализованный объект
-            using (FileStream fs = new(XMLFile2, FileMode.OpenOrCreate))
-            {
-                xmlSerializer.Serialize(fs, person);
 
-                Console.WriteLine("Object has been serialized");
-            }
+            //// получаем поток, куда будем записывать сериализованный объект
+            //using (StreamWriter fs = new StreamWriter(XMLFile2))//, FileMode.OpenOrCreate))
+            //{
+            //    xmlSerializer.Serialize(fs, person);
+                
+            //    Console.WriteLine("Object has been serialized");
+            //}
 
             //Deserialize
-            using (FileStream fs = new FileStream("person.xml", FileMode.OpenOrCreate))
+            using (StreamReader fs = new FileInfo(XMLFile2).OpenText())//, FileMode.OpenOrCreate))
             {
-                Person person1 = (Person)xmlSerializer.Deserialize(fs) ?? new() ;
+                Person? person1 = xmlSerializer.Deserialize(fs) as Person;
                 Console.WriteLine($"Name: {person1?.Name}  Age: {person1?.Age}");
             }
         }
@@ -74,12 +79,15 @@ namespace _3_Modul.Lesson_6_JSON_XML.XML_Sample
     {
         public string Name { get; set; } = "Undefined";
         public int Age { get; set; } = 1;
+        public int Id { get; set; } = 1;
+        
 
         public Person() { }
-        public Person(string name, int age)
+        public Person(string name, int age, int id )
         {
             Name = name;
             Age = age;
+            Id = id;
         }
     }
 }
