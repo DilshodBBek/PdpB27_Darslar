@@ -15,7 +15,8 @@ namespace _3_Modul
             //Startup_3_lesson.Main();
             //DateTimeStartup.Start();
             //Files_Directories_5_lesson.Startup.Run();
-            Lesson_6_JSON_XML.Startup.Start();
+            //Lesson_6_JSON_XML.Startup.Start();
+            Lesson7_System_Net_Http.Startup.Start();
 
 
         }
