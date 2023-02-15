@@ -25,32 +25,6 @@ namespace _3_Modul.Lesson_6_JSON_XML.JSON_Example
             };
             #region SerializeObject
             string json = JsonConvert.SerializeObject(account, Formatting.Indented);
-            JsonSerializerOptions options = new JsonSerializerOptions() { WriteIndented = true };
-
-            json = @"{
-   'CPU': 'Intel',
-   'PSU': '500W',
-   'Drives': [
-     'DVD read/writer'
-     /*(broken)*/,
-     '500 gigabyte hard drive',
-     '200 gigabyte hard drive'
-   ]
-}";
-
-            JsonTextReader reader = new JsonTextReader(new StringReader(json));
-            while (reader.Read())
-            {
-                if (reader.Value != null)
-                {
-                    Console.WriteLine("Token: {0}, Value: {1}", reader.TokenType, reader.Value);
-                }
-                else
-                {
-                    Console.WriteLine("Token: {0}", reader.TokenType);
-                }
-            }
-
             // {
             //   "Email": "james@example.com",
             //   "Active": true,

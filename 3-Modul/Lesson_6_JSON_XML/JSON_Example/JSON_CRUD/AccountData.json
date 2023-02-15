@@ -1,0 +1,32 @@
+[
+  {
+    "Id": 1,
+    "Email": "1@mail.uz",
+    "Active": false,
+    "CreatedDate": "0001-01-01T00:00:00"
+  },
+  {
+    "Id": 2,
+    "Email": "2@mail.uz",
+    "Active": false,
+    "CreatedDate": "0001-01-01T00:00:00"
+  },
+  {
+    "Id": 3,
+    "Email": "3@mail.uz",
+    "Active": false,
+    "CreatedDate": "0001-01-01T00:00:00"
+  },
+  {
+    "Id": 4,
+    "Email": "1@mail.uz",
+    "Active": false,
+    "CreatedDate": "0001-01-01T00:00:00"
+  },
+  {
+    "Id": 7,
+    "Email": "@mail.com",
+    "Active": false,
+    "CreatedDate": "0001-01-01T00:00:00"
+  }
+]

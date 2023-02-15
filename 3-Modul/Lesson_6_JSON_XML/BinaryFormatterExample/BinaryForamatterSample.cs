@@ -39,6 +39,6 @@ namespace _3_Modul.Lesson_6_JSON_XML.BinaryFormatterExample
     {
         public int n1 = 0;
         public int n2 = 0;
-        public String str = null;
+        public String? str = null;
     }
 }
