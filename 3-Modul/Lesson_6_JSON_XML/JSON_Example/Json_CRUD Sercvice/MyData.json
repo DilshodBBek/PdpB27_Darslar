@@ -1,0 +1,32 @@
+{
+  Accounts: [
+    {
+      "Id": 1,
+      "Email": "1@mail",
+      "Active": true,
+      "CreatedDate": "2023-02-14T12:28:41.9855077+05:00",
+      "Roles": null
+    },
+    {
+      "Id": 2,
+      "Email": "2@mail",
+      "Active": false,
+      "CreatedDate": "2023-02-14T12:28:41.9928969+05:00",
+      "Roles": null
+    },
+    {
+      "Id": 3,
+      "Email": "3@mail",
+      "Active": true,
+      "CreatedDate": "2023-02-14T12:28:41.9928986+05:00",
+      "Roles": null
+    },
+    {
+      "Id": 4,
+      "Email": "4@mail",
+      "Active": false,
+      "CreatedDate": "2023-02-14T12:28:41.9928987+05:00",
+      "Roles": null
+    }
+  ]
+}
