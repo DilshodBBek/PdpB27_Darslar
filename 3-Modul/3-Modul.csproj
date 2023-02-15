@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Lesson_6_JSON_XML\JSON_Example\JsonTraining\Models\Root.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Files_Directories_5_lesson\MyFolder\SubFolderA\TestFolder\" />
     <Folder Include="Lesson_6_JSON_XML\XML_Sample\Crud_USER_Service\Users_Database\" />
     <Folder Include="Person\" />

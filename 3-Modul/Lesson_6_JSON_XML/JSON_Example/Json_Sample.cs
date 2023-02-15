@@ -4,14 +4,14 @@ using System.Text.Json;
 
 namespace _3_Modul.Lesson_6_JSON_XML.JSON_Example
 {
-    public class Account
-    {
-        public int Id { get; set; }
-        public string Email { get; set; }
-        public bool Active { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public IList<string> Roles { get; set; }
-    }
+    //public class Account
+    //{
+    //    public int Id { get; set; }
+    //    public string Email { get; set; }
+    //    public bool Active { get; set; }
+    //    public DateTime CreatedDate { get; set; }
+    //    public IList<string> Roles { get; set; }
+    //}
     internal class Json_Sample
     {
         internal static void Run()
@@ -21,7 +21,7 @@ namespace _3_Modul.Lesson_6_JSON_XML.JSON_Example
                 Email = "james@example.com",
                 Active = true,
                 CreatedDate = new DateTime(2013, 1, 20, 0, 0, 0, DateTimeKind.Utc),
-                Roles = new List<string> { "User, Admin" }
+                //Roles = new List<string> { "User, Admin" }
             };
             #region SerializeObject
             string json = JsonConvert.SerializeObject(account, Formatting.Indented);

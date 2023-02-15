@@ -7,13 +7,11 @@ namespace _3_Modul.Lesson_6_JSON_XML.JSON_Example.JSON_CRUD
     {
         string _path = @"..\..\..\Lesson_6_JSON_XML\JSON_Example\JSON_CRUD\AccountData.json";
         string _db;
-        //JObject _jDb;
         public CrudJson_Service()
         {
             if (File.Exists(_path))
             {
                 _db = File.ReadAllText(_path);
-                // _jDb = JObject.Parse(_db);
             }
         }
 
@@ -46,7 +44,8 @@ namespace _3_Modul.Lesson_6_JSON_XML.JSON_Example.JSON_CRUD
         {
             JArray accounts = JArray.Parse(_db);
             JToken? FoundAccount = accounts.FirstOrDefault(x => (int)x["Id"] == id);
-
+            //JProperty? prop =new JProperty( FoundAccount.Children<JProperty>().Select(x=>x.Name).FirstOrDefault());
+            JToken? id1 = FoundAccount.FirstOrDefault(x => (int)x["Id"] == 1);
             if (FoundAccount != null)
             {
                 accounts.Remove(FoundAccount);

@@ -1,5 +1,8 @@
 ﻿using _3_Modul.Lesson_6_JSON_XML.JSON_Example;
+using _3_Modul.Lesson_6_JSON_XML.JSON_Example.JSON_CRUD;
 using _3_Modul.Lesson_6_JSON_XML.JSON_Example.Json_CRUD_Sercvice;
+using _3_Modul.Lesson_6_JSON_XML.JSON_Example.JsonTraining.Models;
+using Newtonsoft.Json;
 
 namespace _3_Modul.Lesson_6_JSON_XML
 {
@@ -7,22 +10,15 @@ namespace _3_Modul.Lesson_6_JSON_XML
     {
         public static void Start()
         {
-            JsonCrud jsonCrud = new();
-
-            List<Account> accounts = new List<Account>()
-            {
-                new Account() {Active= true, CreatedDate=DateTime.Now, Id=5, Email="1@mail"},
-                new Account() {Active= false, CreatedDate=DateTime.Now, Id=2, Email="2@mail"},
-                new Account() {Active= true, CreatedDate=DateTime.Now, Id=3, Email="3@mail"},
-                new Account() {Active= false, CreatedDate=DateTime.Now, Id=4, Email="4@mail"},
-            };
-
-            jsonCrud.Add(accounts);
-
+            CRUD test=new CRUD();
+            //test.Serialize(new Shop() { requests = new List<Request>(), folders=new() });
+            Shop? shop=test.GetAll();
+            string result = JsonConvert.SerializeObject(shop, Formatting.Indented);
+            Console.WriteLine(result);
             //Json_Sample.Run();
-            List<Account> accounts = InitData();
-            CrudJson_Service crudJson_service = new();
-            crudJson_service.Update(7, new Account() { Email="@mail.com"});
+            //List<Account> accounts = InitData();
+            //CrudJson_Service crudJson_service = new();
+            //crudJson_service.Delete(7);//, new Account() { Email = "@mail.com" });
 
         }
 
