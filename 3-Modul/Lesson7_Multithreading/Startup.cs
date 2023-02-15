@@ -1,15 +1,15 @@
-﻿using _3_Modul.Lesson7_System_Net_Http.Multithreading;
+﻿using _3_Modul.Lesson7_Multithreading.Multithreading;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _3_Modul.Lesson7_System_Net_Http
+namespace _3_Modul.Lesson7_Multithreading
 {
     internal class Startup
     {
-        public static void Start()
+        public static void Run()
         {
             Multithread_Examples.Start();   
         }

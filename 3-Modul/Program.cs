@@ -2,6 +2,7 @@
 using _3_Modul.AnonymVariable;
 using _3_Modul.DateTime_4_lesson;
 using _3_Modul.Files_Directories_5_lesson;
+using _3_Modul.Lesson7_Multithreading.Multithreading;
 using _3_Modul.Regex_3_Lesson;
 
 namespace _3_Modul
@@ -15,8 +16,8 @@ namespace _3_Modul
             //Startup_3_lesson.Main();
             //DateTimeStartup.Start();
             //Files_Directories_5_lesson.Startup.Run();
-            Lesson_6_JSON_XML.Startup.Start();
-            //Lesson7_System_Net_Http.Startup.Start();
+            //Lesson_6_JSON_XML.Startup.Start();
+            _3_Modul.Lesson7_Multithreading.Startup.Run();
 
 
         }
