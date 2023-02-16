@@ -4,7 +4,7 @@
     {
         public static void Start()
         {
-            LockSyncThreads();
+            UsingMonitor();
         }
         static void ThreadProperties()
         {
@@ -19,39 +19,45 @@
             Console.WriteLine($"Статус потока: {currentThread.ThreadState}");
             Console.WriteLine(Thread.GetDomain());
             Console.WriteLine(Thread.GetDomainID());
-            //Console.WriteLine(currentThread.Interrupt());
+            currentThread.Interrupt();
+            Console.WriteLine($"Статус потока: {currentThread.ThreadState}");
         }
         static void CreateThread()
         {
-            Thread myThread1 = new Thread(Print);
+            ThreadStart mydelegate = Print;
+            // ParameterizedThreadStart
+            Thread myThread1 = new Thread(mydelegate);
+            Thread myThread4 = new Thread(mydelegate, 1);
             Thread myThread2 = new Thread(new ThreadStart(Print));
-            Thread myThread3 = new Thread(() => Console.WriteLine("Hello Threads"));
+            Thread myThread3 = new Thread((object? obj) => Console.WriteLine(obj + " Hello Threads"));
 
+            myThread4.Start();
             myThread1.Start();  // запускаем поток myThread1
             myThread2.Start();  // запускаем поток myThread2
-            myThread3.Start();  // запускаем поток myThread3
+            myThread3.Start("salom");  // запускаем поток myThread3
         }
         static void MultiThreadWork()
         {
             // создаем новый поток
             Thread myThread = new Thread(Print);
+            //myThread.Priority = ThreadPriority.Lowest;
             // запускаем поток myThread
             myThread.Start();
 
             // действия, выполняемые в главном потоке
-            for (int i = 5; i < 10; i++)
+            for (int i = 5; i < 1000; i++)
             {
                 Console.WriteLine($"Главный поток: {i}");
-                Thread.Sleep(300);
+                //Thread.Sleep(300);
             }
 
             // действия, выполняемые во втором потокке
             void Print()
             {
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 1000; i++)
                 {
                     Console.WriteLine($"Второй поток: {i}");
-                    Thread.Sleep(400);
+                    // Thread.Sleep(400);
                 }
             }
         }
@@ -60,7 +66,7 @@
             int x = 0;
 
             // запускаем пять потоков
-            for (int i = 1; i < 6; i++)
+            for (int i = 1; i < 3; i++)
             {
                 Thread myThread = new(Print);
                 myThread.Name = $"Поток {i}";   // устанавливаем имя для каждого потока
@@ -74,18 +80,20 @@
                 {
                     Console.WriteLine($"{Thread.CurrentThread.Name}: {x}");
                     x++;
-                    Thread.Sleep(100);
+                    //Thread.Sleep(100);
                 }
             }
         }
         static void LockSyncThreads()
         {
             int x = 0;
+
             object locker = new();  // объект-заглушка
-                                    // запускаем пять потоков
+            object locker2 = new();  // объект-заглушка
+                                     // запускаем пять потоков
             for (int i = 1; i < 6; i++)
             {
-                Thread myThread;
+                Thread myThread = new(Print);
                 if (i % 2 == 0)
                 {
                     myThread = new(Print);
@@ -106,20 +114,22 @@
                     x = 1;
                     for (int i = 1; i < 6; i++)
                     {
-                        Console.WriteLine($"{Thread.CurrentThread.Name}: {x}");
+
+                        Console.WriteLine($"Print: {Thread.CurrentThread.Name}: {x}");
                         x++;
                         Thread.Sleep(100);
+
                     }
                 }
             }
             void Print2()
             {
-                lock (locker)
+                lock (locker2)
                 {
                     x = 1;
                     for (int i = 1; i < 6; i++)
                     {
-                        Console.WriteLine($"{Thread.CurrentThread.Name}: {x}");
+                        Console.WriteLine($"Print2: {Thread.CurrentThread.Name}: {x}");
                         x++;
                         Thread.Sleep(100);
                     }
@@ -150,7 +160,12 @@
                         Console.WriteLine($"{Thread.CurrentThread.Name}: {x}");
                         x++;
                         Thread.Sleep(100);
+                        throw new Exception();
                     }
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine(e.Message);
                 }
                 finally
                 {
@@ -286,7 +301,7 @@
                 _pool.Release();
             }
         }
-        static void Print() => Console.WriteLine("Hello Threads");
+        static void Print() { Console.WriteLine("Hello Threads"); }
 
     }
 
