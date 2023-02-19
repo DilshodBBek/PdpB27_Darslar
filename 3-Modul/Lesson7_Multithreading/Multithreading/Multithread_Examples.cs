@@ -1,10 +1,12 @@
-﻿namespace _3_Modul.Lesson7_Multithreading.Multithreading;
+﻿using System.Diagnostics;
+
+namespace _3_Modul.Lesson7_Multithreading.Multithreading;
 
 internal class Multithread_Examples
 {
     public static void Start()
     {
-        Using_Mutex();
+        ThreadPool1();
     }
     static void ThreadProperties()
     {
@@ -162,6 +164,7 @@ internal class Multithread_Examples
                     Thread.Sleep(100);
                     throw new Exception();
                 }
+
             }
             catch (Exception e)
             {
@@ -176,8 +179,9 @@ internal class Multithread_Examples
     static void UsingMonitor1()
     {
         MyQueue<string> myQueue = new MyQueue<string>();
-
-        Thread DequeueThread = new Thread(() => Console.WriteLine(myQueue.Dequeue()));
+        //myQueue.CheckLocker();
+        Thread DequeueThread = new(() => Console.WriteLine(myQueue.Dequeue()));
+        DequeueThread.Name = "QueueThread";
         DequeueThread.Start();
         Console.WriteLine("Before start Enqueu");
         myQueue.Enqueue("hello");
@@ -238,14 +242,6 @@ internal class Multithread_Examples
     {
         AutoResetEvent resetEvent = new AutoResetEvent(false);
 
-        Thread thread1 = new Thread(() =>
-        {
-            // do some work
-            Thread.Sleep(1000);
-            Console.WriteLine("Sleep(100000) finished");
-            resetEvent.Set();
-        });
-
         Thread thread2 = new Thread(() =>
         {
             resetEvent.WaitOne();
@@ -253,8 +249,18 @@ internal class Multithread_Examples
             // do some other work
         });
 
-        thread1.Start();
+        Thread thread1 = new Thread(() =>
+        {
+            // do some work
+            Thread.Sleep(5000);
+            Console.WriteLine("Sleep(5000) finished");
+            resetEvent.Set();
+            // Thread.Sleep(5000);
+            Console.WriteLine("Set finished");
+        });
+
         thread2.Start();
+        thread1.Start();
 
     }
     static void Using_Join()
@@ -264,37 +270,41 @@ internal class Multithread_Examples
         Thread thread1 = new Thread(Method1);
         Thread thread2 = new Thread(Method2);
         Thread thread3 = new Thread(Method3);
+
         thread1.Start();
         thread2.Start();
         thread3.Start();
+
         thread1.Join(); //Block Main Thread until thread1 completes its execution
-        thread2.Join(); //Block Main Thread until thread2 completes its execution
-        thread3.Join(); //Block Main Thread until thread3 completes its execution
+        Console.WriteLine("Main thread");
+        //thread2.Join(); //Block Main Thread until thread2 completes its execution
+        //thread3.Join(); //Block Main Thread until thread3 completes its execution
         Console.WriteLine("Main Thread Ended");
         Console.Read();
+
         static void Method1()
         {
             Console.WriteLine("Method1 - Thread1 Started");
-            Thread.Sleep(1000);
+            Thread.Sleep(5000);
             Console.WriteLine("Method1 - Thread 1 Ended");
         }
         static void Method2()
         {
             Console.WriteLine("Method2 - Thread2 Started");
-            Thread.Sleep(2000);
+            Thread.Sleep(10000);
             Console.WriteLine("Method2 - Thread2 Ended");
         }
         static void Method3()
         {
             Console.WriteLine("Method3 - Thread3 Started");
-            Thread.Sleep(5000);
+            Thread.Sleep(5000000);
             Console.WriteLine("Method3 - Thread3 Ended");
         }
     }
     static void Using_Mutex()
     {
         int x = 0;
-        Mutex mutexObj = new();
+        //Mutex mutexObj = new(false);
 
         // запускаем пять потоков
         for (int i = 1; i < 6; i++)
@@ -306,20 +316,47 @@ internal class Multithread_Examples
 
         void Print()
         {
-            mutexObj.WaitOne();     // приостанавливаем поток до получения мьютекса
-            x = 1;
-            for (int i = 1; i < 6; i++)
+            using (Mutex mutex = new Mutex(false, "MutexDemo"))
             {
-                Console.WriteLine($"{Thread.CurrentThread.Name}: {x}");
-                x++;
-                Thread.Sleep(100);
+                if (mutex.WaitOne())
+                {
+                    Console.WriteLine("CurrentThread: " + Thread.CurrentThread.Name);// приостанавливаем поток до получения мьютекса
+                    Thread.Sleep(3000);
+                    x = 1;
+                    for (int i = 1; i < 6; i++)
+                    {
+                        Console.WriteLine($"{Thread.CurrentThread.Name}: {x}");
+                        x++;
+                        Thread.Sleep(100);
+                    }
+                    //  mutex.ReleaseMutex();    // освобождаем мьютекс
+                }
+                else
+                {
+                    Console.WriteLine("CurrentThread: " + Thread.CurrentThread.Name);
+
+                }
             }
-            mutexObj.ReleaseMutex();    // освобождаем мьютекс
+        }
+    }
+    static void Mutex1()
+    {
+        using (Mutex mutex = new Mutex(false, "MutexDemo"))
+        {
+            //Checking if Other External Thread is Running
+            if (!mutex.WaitOne(5000, true))
+            {
+                Console.WriteLine("An Instance of the Application is Already Running");
+                Console.ReadKey();
+                return;
+            }
+            Console.WriteLine("Application Is Running.......");
+            Console.ReadKey();
         }
     }
     static void Using_Semaphore()
     {
-        for (int i = 1; i < 6; i++)
+        for (int i = 1; i < 10; i++)
         {
             Reader reader = new Reader(i);
         }
@@ -346,7 +383,52 @@ internal class Multithread_Examples
     }
     static void Print() { Console.WriteLine("Hello Threads"); }
 
+    static void ThreadPool1()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            MethodWithThread();
+            MethodWithThreadPool();
+        }
+        Stopwatch stopwatch = new Stopwatch();
+        Console.WriteLine("Execution using Thread");
+        stopwatch.Start();
+        MethodWithThread();
+        stopwatch.Stop();
+        Console.WriteLine("Time consumed by MethodWithThread is : " +
+                             stopwatch.ElapsedTicks.ToString());
+
+        stopwatch.Reset();
+        Console.WriteLine("Execution using Thread Pool");
+        stopwatch.Start();
+        MethodWithThreadPool();
+        stopwatch.Stop();
+        Console.WriteLine("Time consumed by MethodWithThreadPool is : " +
+                             stopwatch.ElapsedTicks.ToString());
+
+        Console.Read();
+    }
+    public static void MethodWithThread()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            Thread thread = new Thread(Test);
+            thread.Start();
+        }
+    }
+    public static void MethodWithThreadPool()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            ThreadPool.QueueUserWorkItem(new WaitCallback(Test));
+        }
+    }
+    public static void Test(object obj)
+    {
+    }
 }
+
+
 
 //Example Monitor
 public class MyQueue<T>
@@ -359,18 +441,34 @@ public class MyQueue<T>
         lock (_lock)
         {
             _queue.Enqueue(item);
+            //Monitor.Pulse(_lock);
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine("Pulse");
+
+            }
+            Thread.Sleep(5000);
             Monitor.Pulse(_lock);
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine("Pulse");
+
+            }
         }
     }
 
     public T Dequeue()
     {
+
         lock (_lock)
         {
             while (_queue.Count == 0)
             {
                 Monitor.Wait(_lock);
-                Console.WriteLine("Dequeu");
+                for (int i = 0; i < 5; i++)
+                {
+                    Console.WriteLine("Dequeu");
+                }
             }
             return _queue.Dequeue();
         }
@@ -378,6 +476,9 @@ public class MyQueue<T>
 
     public void CheckLocker()
     {
+        Monitor.Enter(_lock);
+        Monitor.Wait(_lock, 1000);
+        Console.WriteLine("object is locked");
         if (Monitor.TryEnter(_lock))
         {
             try
@@ -393,6 +494,7 @@ public class MyQueue<T>
         {
             // The lock is currently held by another thread, so we can't enter it
         }
+
     }
 }
 
@@ -400,34 +502,36 @@ public class MyQueue<T>
 class Reader
 {
     // создаем семафор
-    static Semaphore sem = new Semaphore(3, 3);
+    static Semaphore sem = new Semaphore(2, 4);
     Thread myThread;
-    int count = 3;// счетчик чтения
+    //  int count = 4;// счетчик чтения
 
     public Reader(int i)
     {
         myThread = new Thread(Read);
-        myThread.Name = $"Читатель {i}";
+        myThread.Name = $"Potok {i}";
+
         myThread.Start();
     }
 
     public void Read()
     {
-        while (count > 0)
-        {
-            sem.WaitOne();  // ожидаем, когда освободиться место
+        //while (count > 0)
+        //{
 
-            Console.WriteLine($"{Thread.CurrentThread.Name} входит в библиотеку");
+        sem.WaitOne();  // ожидаем, когда освободиться место
 
-            Console.WriteLine($"{Thread.CurrentThread.Name} читает");
-            Thread.Sleep(1000);
+        Console.WriteLine($"{Thread.CurrentThread.Name} входит в библиотеку");
 
-            Console.WriteLine($"{Thread.CurrentThread.Name} покидает библиотеку");
+        //Console.WriteLine($"{Thread.CurrentThread.Name} читает");
+        Thread.Sleep(10000);
 
-            sem.Release();  // освобождаем место
+        //Console.WriteLine($"{Thread.CurrentThread.Name} покидает библиотеку");
 
-            count--;
-            Thread.Sleep(1000);
-        }
+        sem.Release();  // освобождаем место
+
+        // count--;
+        //Thread.Sleep(1000);
+        //}
     }
 }
