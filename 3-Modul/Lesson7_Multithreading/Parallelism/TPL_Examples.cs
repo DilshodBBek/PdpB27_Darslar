@@ -1,19 +1,61 @@
-﻿namespace _3_Modul.Lesson7_Multithreading.Parallelism
+﻿using System.Runtime.CompilerServices;
+
+namespace _3_Modul.Lesson7_Multithreading.Parallelism
 {
     internal static class TPL_Examples
     {
-        public static void Run()
+        
+        
+        public static async void Run()
         {
             Console.WriteLine("Run Method Started......");
-            //PrintAsync();
-            //// SomeMethod();
-            //Console.WriteLine("Run Method End");
-            //Console.ReadKey();
-            //PrintAsync1();                   // This is an async void method and cannot be awaited
-            //await PrintAsync2();
-            // Call the method that calls the async methods
-            //CallAsyncMethods();//#region Difference between Task and void
+            var sds = SomeMethod();
+            Console.WriteLine("Run Method End");
+            Console.ReadKey();  
         }
+        async static Task PrintAsync()
+        {
+
+            Task task = new Task(() =>
+            {
+                Console.WriteLine("Action task");
+            });
+            task.Start();
+            task.Wait();
+            TaskAwaiter taskAwaiter = task.GetAwaiter();
+            
+
+            Console.WriteLine("PrintAsync Method Started......");
+            SomeMethod();
+            Console.WriteLine("\n");
+            await Wait();
+            Console.WriteLine("PrintAsync Method End");
+        }
+        public async static Task<string> SomeMethod()
+        {
+            Console.WriteLine("Some Method Started......");
+            List<string> result = await GetAllUsers();
+            Console.WriteLine("\nSome Method End");
+            return "sdf";
+        }
+
+        private static async Task<List<string>> GetAllUsers()
+        {
+            List<string> users = new List<string>();
+            for (int i = 1; i < 100000; i++)
+            {
+                users.Add("User" + i);                
+            }
+            return users;
+        }
+
+        private static async Task Wait()
+        {
+            Console.WriteLine("Wait started");
+            await Task.Delay(TimeSpan.FromSeconds(2));
+            Console.WriteLine("\n2 Seconds wait Completed");
+        }
+
         #region Difference between Task and void
         static async void AsyncVoidMethod()
         {
@@ -48,51 +90,5 @@
 
 
         #endregion
-        static void Print()
-        {
-            Console.WriteLine("Print Method Started......");
-            Task.Delay(TimeSpan.FromSeconds(5));
-            Console.WriteLine("\n");
-            Console.WriteLine("Print Method End");
-        }
-        static async void PrintAsync()
-        {
-            Console.WriteLine("PrintAsync Method Started......");
-            await Task.Delay(TimeSpan.FromSeconds(5));
-            Console.WriteLine("\n");
-            Console.WriteLine("PrintAsync Method End");
-        }
-        public async static void SomeMethod()
-        {
-            Console.WriteLine("Some Method Started......");
-            await Task.Delay(TimeSpan.FromSeconds(10));
-            //await Wait();
-            Console.WriteLine("\nSome Method End");
-        }
-        private static async Task Wait()
-        {
-            await Task.Delay(TimeSpan.FromSeconds(10));
-            Console.WriteLine("\n10 Seconds wait Completed\n");
-        }
-        // Example of an async void method
-       static async void PrintAsync1()
-        {
-            Console.WriteLine("Printing...");
-            await Task.Delay(1000);
-            Console.WriteLine("Done printing.");
-        }
-
-        // Example of an async Task method
-       static async Task PrintAsync2()
-        {
-            Console.WriteLine("Printing...");
-            await Task.Delay(1000);
-            Console.WriteLine("Done printing.");
-        }
-
-        // Call the methods
-                   // This is an async Task method and can be awaited
-
-
     }
 }
