@@ -13,7 +13,9 @@ namespace _3_Modul.Lesson7_Multithreading
         public static void Run()
         {
             //Multithread_Examples.Start();   
-            TPL_Examples.Run();
+            //TPL_Examples.Run();
+           //new Task_example().Run();
+           new Cancel_Task_Example().Run();    
         }
     }
 }

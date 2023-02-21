@@ -4,8 +4,6 @@ namespace _3_Modul.Lesson7_Multithreading.Parallelism
 {
     internal static class TPL_Examples
     {
-        
-        
         public static async void Run()
         {
             Console.WriteLine("Run Method Started......");
