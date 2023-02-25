@@ -1,10 +1,72 @@
-﻿namespace _3_Modul.Lesson8_LINQ.Linq2Obj
+﻿using System.Diagnostics;
+
+namespace _3_Modul.Lesson8_LINQ.Linq2Obj
 {
     internal class Examples
     {
         public static void Run()
         {
-            StudentMethod();
+            //StudentMethod();
+            Range1();
+        }
+        static  void Range1()
+        {
+            IEnumerable<int> numberSequence = Enumerable.Range(12, 40).TakeWhile(x=>x%2==0);
+            foreach (int i in numberSequence)
+            {
+                Console.WriteLine(i);
+            }
+            Console.ReadKey();
+        }
+        static void Main1()
+        {
+            var random = new Random();
+            int[] values = Enumerable.Range(1, 99999999)
+                .Select(x => random.Next(1, 1000)).ToArray();
+            //Min, Max and Average LINQ extension methods
+            Console.WriteLine("Min, Max and Average with LINQ");
+
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            // var linqStart = DateTime.Now; 
+            var linqMin = values.Min();
+            var linqMax = values.Max();
+            var linqAverage = values.Average();
+            stopwatch.Stop();
+            var linqTimeMS = stopwatch.ElapsedMilliseconds;
+            DisplayResults(linqMin, linqMax, linqAverage, linqTimeMS);
+            //Min, Max and Average PLINQ extension methods
+            Console.WriteLine("\nMin, Max and Average with PLINQ");
+            Stopwatch stopwatch1 = new Stopwatch();
+            stopwatch1.Start();
+            var plinqMin = values.AsParallel().Min();
+            var plinqMax = values.AsParallel().Max();
+            var plinqAverage = values.AsParallel().Average();
+            stopwatch1.Stop();
+            var plinqTimeMS = stopwatch1.ElapsedMilliseconds;
+            DisplayResults(plinqMin, plinqMax, plinqAverage, plinqTimeMS);
+
+            Console.ReadKey();
+        }
+        static void DisplayResults(int min, int max, double average, double time)
+        {
+            Console.WriteLine($"Min: {min}\nMax: {max}\n" + $"Average: {average:F}\nTotal time in milliseconds: {time}");
+        }
+        static void More()
+        {
+            List<int> dataSource1 = new List<int>() { 1, 2, 3, 4, 5, 6 };
+            List<int> dataSource2 = new List<int>() { 1, 3, 5, 8, 9, 10 };
+            //Method Syntax
+            var MS = dataSource1.Union(dataSource2).ToList();
+            //Query Syntax
+            var QS = (from num in dataSource1
+                      select num)
+                      .Union(dataSource2).ToList();
+            foreach (var item in MS)
+            {
+                Console.WriteLine(item);
+            }
+            Console.ReadKey();
         }
         public static void StudentMethod()
         {
